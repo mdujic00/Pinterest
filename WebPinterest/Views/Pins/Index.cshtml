@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebPinterest.Models.Pin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style type="text/css">
+    .thumbnail {
+        display: inline-block;
+        width: 300px;
+        height: 350px;
+        background-color: lightsteelblue;
+        margin-top: auto;
+        margin-left: 30px;
+        margin-right:30px;
+    }
+    .img{
+        height:180px;
+        width:290px;
+    }
+</style>
+
+<h2>Pins</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="container">
+
+
+    @foreach (var item in Model)
+    {
+
+        <div class="thumbnail">
+            <div><img class="img" src="@Html.DisplayFor(modelItem => item.Picture)" alt="...">
+             </div>
+            <div class="caption">
+                <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                <p>@Html.DisplayFor(modelItem => item.Text)</p>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PinID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PinID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PinID })
+                </p>
+
+            </div>
+        </div>
+
+
+    }
+
+    </div>
